@@ -32,9 +32,15 @@ section if you run into issues.
 By default, it will print out the passcode for all devices it can find an unencrypted backup for, displaying
 the most recently backed up first.
 
+**NOTE**: The "Encrypt local backup" option **must** be disabled in iTunes for your device so that pinfinder
+can read the file that contains the passcode.  You'll see a "backup is encrypted" message in pinfinder if it's on.
+
+![Disable Encrypt Backup](docs/iphone-backup-hint.png)
+
+
 ### Windows
 
-1.  Backup the device using iTunes on a desktop computer.
+1.  Backup the device using [iTunes](https://www.apple.com/itunes/download/) on a desktop or laptop computer.
 NOTE: The "encrypt backup" option *must be disabled* in iTunes.
 2. Download pinfinder from the [latest releases](https://github.com/gwatts/pinfinder/releases) page.
 3. Select "Open" when prompted by the web browser
@@ -57,7 +63,7 @@ _[click here for full size version of above image](https://raw.githubusercontent
 ### Mac
 
 
-1.  Backup the device using iTunes on a desktop computer.
+1.  Backup the device using iTunes on a desktop or laptop computer.
 NOTE: The "encrypt backup" option *must be disabled* in iTunes.
 2. Download pinfinder from the [latest releases](https://github.com/gwatts/pinfinder/releases) page.
 3. Select the tar.gz file in the download list to open it.
@@ -128,8 +134,20 @@ the text the program prints in the issue so I can help.
 If you don't want to use one of the [pre-compiled binaries](https://github.com/gwatts/pinfinder/releases)
 you can compile it yourself.
 
-1. [Download and install Go](https://golang.org/doc/install)
-2. run go install github.com/gwatts/pinfinder
+1. [Download and install Go](https://golang.org/doc/install) - Be sure to follow the instructions to [setup a workspace](https://golang.org/doc/code.html#Workspaces) and set a `GOPATH` environment variable to suit
+2. run `go get github.com/gwatts/pinfinder`
+
+If you just want to compile the program as quick as possible, install Go from the web site above, and run the following steps to build and install it to `~/pinfinder/bin/pinfinder`
+
+```bash
+cd ~
+mkdir ~/pinfinder
+cd pinfinder
+mkdir src bin pkg
+export GOPATH=~/pinfinder
+go get github.com/gwatts/pinfinder
+bin/pinfinder
+```
 
 ## Other resources
 
@@ -140,4 +158,4 @@ https://nbalkota.wordpress.com/2014/04/05/recover-your-forgotten-ios-7-restricti
 
 ## Other Notes
 
-Last tested with iOS 8 through 9.2.1 on OS X 10.10, 10.11, Windows XP and Windows 8 with iTunes 12.3
+Last tested with iOS 8 through 10.0.2 on OS X 10.10, 10.11, Windows XP and Windows 8 with iTunes 12.5
